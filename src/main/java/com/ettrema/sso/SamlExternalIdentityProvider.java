@@ -1,22 +1,5 @@
 package com.ettrema.sso;
 
-import com.bradmcevoy.http.Request;
-import com.bradmcevoy.http.Resource;
-import com.bradmcevoy.http.Response;
-import com.bradmcevoy.io.StreamUtils;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
-import java.security.UnrecoverableEntryException;
-import java.security.cert.CertificateException;
-import java.util.Enumeration;
-import java.util.UUID;
-import javax.xml.namespace.QName;
 //import org.joda.time.DateTime;
 //import org.opensaml.Configuration;
 //import org.opensaml.DefaultBootstrap;
@@ -42,7 +25,6 @@ import javax.xml.namespace.QName;
 //import org.opensaml.xml.security.x509.BasicX509Credential;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.w3c.dom.Document;
 
 /**
  *
@@ -63,12 +45,12 @@ public class SamlExternalIdentityProvider { //implements ExternalIdentityProvide
 //	private Credential localCred;  // initialised in cstr
 //
 //	/**
-//	 * 
+//	 *
 //	 * @param keystoreFile - the keystore file
 //	 * @param localAlias - the alias for the local certificate
 //	 * @param keystorePassword - password to open keystore
 //	 * @param localPassword - password to access local alias
-//	 * 
+//	 *
 //	 * @throws XMLParserException
 //	 * @throws ConfigurationException
 //	 * @throws KeyStoreException
@@ -76,7 +58,7 @@ public class SamlExternalIdentityProvider { //implements ExternalIdentityProvide
 //	 * @throws IOException
 //	 * @throws NoSuchAlgorithmException
 //	 * @throws CertificateException
-//	 * @throws UnrecoverableEntryException 
+//	 * @throws UnrecoverableEntryException
 //	 */
 //	public SamlExternalIdentityProvider(File keystoreFile, String localAlias, String keystorePassword, String localPassword) throws XMLParserException, ConfigurationException, KeyStoreException, FileNotFoundException, IOException, NoSuchAlgorithmException, CertificateException, UnrecoverableEntryException {
 //		if( keystoreFile == null ) {

@@ -1,7 +1,7 @@
 package com.bradmcevoy.http.http11.auth;
 
-import com.bradmcevoy.http.HttpManager;
-import com.ettrema.common.Service;
+import static java.util.concurrent.TimeUnit.SECONDS;
+
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
@@ -9,10 +9,11 @@ import java.util.UUID;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadFactory;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static java.util.concurrent.TimeUnit.*;
+import com.ettrema.common.Service;
 
 /**
  * Periodically checks a map of Nonce's to remove those which
@@ -35,14 +36,14 @@ public class ExpiredNonceRemover implements Runnable, Service {
     public ExpiredNonceRemover( Map<UUID, Nonce> nonces, int nonceValiditySeconds ) {
         this.nonces = nonces;
         this.nonceValiditySeconds = nonceValiditySeconds;
-        scheduler = Executors.newScheduledThreadPool( 1, new DaemonThreadFactory() );		
+        scheduler = Executors.newScheduledThreadPool( 1, new DaemonThreadFactory() );
     }
 
 	public void start() {
         log.debug( "scheduling checks for expired nonces every " + INTERVAL + " seconds");
         scheduler.scheduleAtFixedRate( this, 10, INTERVAL, SECONDS );
-	}	
-	
+	}
+
 	public void stop() {
 		scheduler.shutdown();
 	}

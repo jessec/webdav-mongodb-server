@@ -4,10 +4,12 @@ import com.bradmcevoy.http.PropFindableResource;
 import com.bradmcevoy.http.Resource;
 import com.bradmcevoy.property.PropertySource.PropertyAccessibility;
 import com.bradmcevoy.property.PropertySource.PropertyMetaData;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.xml.namespace.QName;
 
 /**
@@ -29,7 +31,7 @@ public class PropertyMap {
 		if (!name.getNamespaceURI().equals(nameSpace)) {
 			return false;
 		}
-		StandardProperty pa = writersMap.get(name.getLocalPart());
+		StandardProperty<?> pa = writersMap.get(name.getLocalPart());
 		if (pa == null) {
 			return false;
 		} else {
@@ -41,7 +43,7 @@ public class PropertyMap {
 		if (!name.getNamespaceURI().equals(nameSpace)) {
 			return null;
 		}
-		StandardProperty pa = writersMap.get(name.getLocalPart());
+		StandardProperty<?> pa = writersMap.get(name.getLocalPart());
 		if (pa == null) {
 			return null;
 		}
@@ -51,30 +53,30 @@ public class PropertyMap {
 			return null;
 		}
 	}
-	
+
 	public void setProperty(QName name, Resource r, Object val) {
 		if (!name.getNamespaceURI().equals(nameSpace)) {
 			return;
 		}
-		StandardProperty pa = writersMap.get(name.getLocalPart());
+		StandardProperty<Object> pa = writersMap.get(name.getLocalPart());
 		if (pa == null) {
 			return;
 		} else if( !(pa instanceof WritableStandardProperty)) {
 			return ;
 		}
-		WritableStandardProperty wsp = (WritableStandardProperty) pa;
+		WritableStandardProperty<Object> wsp = (WritableStandardProperty<Object>) pa;
 		if (r instanceof PropFindableResource) {
 			wsp.setValue((PropFindableResource) r, val);
 		} else {
 			return;
 		}
-	}	
+	}
 
 	public PropertyMetaData getPropertyMetaData(QName name, Resource r) {
 		if (!name.getNamespaceURI().equals(nameSpace)) {
 			return PropertyMetaData.UNKNOWN;
 		}
-		StandardProperty pa = writersMap.get(name.getLocalPart());
+		StandardProperty<?> pa = writersMap.get(name.getLocalPart());
 		if (pa == null) {
 			return PropertyMetaData.UNKNOWN;
 		} else {
@@ -99,7 +101,7 @@ public class PropertyMap {
 		return list;
 	}
 
-	public void add(StandardProperty pw) {
+	public void add(StandardProperty<?> pw) {
 		writersMap.put(pw.fieldName(), pw);
 	}
 
@@ -109,7 +111,7 @@ public class PropertyMap {
 
 		T getValue(PropFindableResource res);
 
-		Class getValueClass();
+		Class<?> getValueClass();
 	}
 
 	public interface WritableStandardProperty<T> extends StandardProperty<T> {

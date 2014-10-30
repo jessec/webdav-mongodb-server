@@ -113,7 +113,7 @@ public class ServletRequest extends AbstractRequest {
 				UploadListener listener = new UploadListener();
 				MonitoredDiskFileItemFactory factory = new MonitoredDiskFileItemFactory(listener);
 				ServletFileUpload upload = new ServletFileUpload(factory);
-				List items = upload.parseRequest(request);
+				List<?> items = upload.parseRequest(request);
 				log.trace("upload items: " + items.size());
 
 				parseQueryString(params);
@@ -129,7 +129,7 @@ public class ServletRequest extends AbstractRequest {
 				log.trace("files: " + files.size());
 			} else {
 				log.trace("is not MultiPart");
-				for (Enumeration en = request.getParameterNames(); en.hasMoreElements();) {
+				for (Enumeration<?> en = request.getParameterNames(); en.hasMoreElements();) {
 					String nm = (String) en.nextElement();
 					String val = request.getParameter(nm);
 					params.put(nm, val);
@@ -190,7 +190,7 @@ public class ServletRequest extends AbstractRequest {
 
 	public Map<String, String> getHeaders() {
 		Map<String, String> map = new HashMap<String, String>();
-		Enumeration num = request.getHeaderNames();
+		Enumeration<?> num = request.getHeaderNames();
 		while (num.hasMoreElements()) {
 			String name = (String) num.nextElement();
 			String val = request.getHeader(name);

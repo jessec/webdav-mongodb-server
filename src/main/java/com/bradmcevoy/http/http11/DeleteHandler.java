@@ -15,7 +15,8 @@ public class DeleteHandler implements ExistingEntityHandler {
 
     private Logger log = LoggerFactory.getLogger(DeleteHandler.class);
     private final Http11ResponseHandler responseHandler;
-    private final HandlerHelper handlerHelper;
+    @SuppressWarnings("unused")
+	private final HandlerHelper handlerHelper;
     private final ResourceHandlerHelper resourceHandlerHelper;
     private DeleteHelper deleteHelper;
 
@@ -76,5 +77,5 @@ public class DeleteHandler implements ExistingEntityHandler {
 
     public void setDeleteHelper(DeleteHelper deleteHelper) {
         this.deleteHelper = deleteHelper;
-    }   
+    }
 }

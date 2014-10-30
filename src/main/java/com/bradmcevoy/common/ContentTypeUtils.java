@@ -22,13 +22,13 @@ public class ContentTypeUtils {
     }
 
     public static String findContentTypes( String name ) {
-        Collection mimeTypes = MimeUtil.getMimeTypes( name );
+        Collection<?> mimeTypes = MimeUtil.getMimeTypes( name );
         return mimeTypes.toString();
         //return buildContentTypeText(mimeTypes);
     }
 
     public static String findContentTypes( File file ) {
-        Collection mimeTypes = null;
+        Collection<?> mimeTypes = null;
         try {
             mimeTypes = MimeUtil.getMimeTypes( file.getName() );
         } catch( MimeException e ) {
@@ -47,7 +47,7 @@ public class ContentTypeUtils {
 
     }
 
-    private static String buildContentTypeText( Collection mimeTypes ) {
+    private static String buildContentTypeText( Collection<?> mimeTypes ) {
         StringBuilder sb = null;
         for( Object o : mimeTypes ) {
             MimeType mt = (MimeType) o;

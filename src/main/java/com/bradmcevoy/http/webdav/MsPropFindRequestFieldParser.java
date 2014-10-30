@@ -1,7 +1,7 @@
 package com.bradmcevoy.http.webdav;
 
 import java.io.InputStream;
-import java.util.Set;
+
 import javax.xml.namespace.QName;
 
 /**

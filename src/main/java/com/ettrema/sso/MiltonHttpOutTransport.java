@@ -2,8 +2,6 @@ package com.ettrema.sso;
 
 import com.bradmcevoy.http.Request;
 import com.bradmcevoy.http.Response;
-import java.io.OutputStream;
-import java.util.List;
 //import org.opensaml.ws.transport.http.HTTPOutTransport;
 //import org.opensaml.xml.security.credential.Credential;
 
@@ -14,16 +12,16 @@ import java.util.List;
 public class MiltonHttpOutTransport { // implements HTTPOutTransport {
 
 	private final Request request;
-	
+
 	private final Response response;
 
 	public MiltonHttpOutTransport(Request request, Response response) {
 		this.request = request;
 		this.response = response;
 	}
-	
 
-//	
+
+//
 //	@Override
 //	public void setVersion(HTTP_VERSION h) {
 //		throw new UnsupportedOperationException("Not supported yet.");
@@ -56,7 +54,7 @@ public class MiltonHttpOutTransport { // implements HTTPOutTransport {
 //
 //	@Override
 //	public void setCharacterEncoding(String charset) {
-//		
+//
 //	}
 //
 //	@Override
@@ -143,5 +141,5 @@ public class MiltonHttpOutTransport { // implements HTTPOutTransport {
 //	public HTTP_VERSION getVersion() {
 //		throw new UnsupportedOperationException("Not supported yet.");
 //	}
-//	
+//
 }

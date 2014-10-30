@@ -15,17 +15,17 @@ import java.util.Collection;
 
 /**
  * Used to provide access to static files via Milton
- * 
+ *
  * For a full implementation of webdav on a filesystem use the milton-filesysten
  * project
- * 
+ *
  * @author brad
  */
 public class StaticResource implements GetableResource {
-    
+
     private final File file;
     private String contentType;
-    
+
     public StaticResource(File file, String url, String contentType) {
         if( file.isDirectory() ) throw new IllegalArgumentException("Static resource must be a file, this is a directory: " + file.getAbsolutePath());
         this.file = file;
@@ -36,11 +36,11 @@ public class StaticResource implements GetableResource {
     public String getUniqueId() {
         return file.hashCode() + "";
     }
-    
+
     public int compareTo(Resource res) {
         return this.getName().compareTo(res.getName());
-    }    
-    
+    }
+
 	@Override
     public void sendContent(OutputStream out, Range range, Map<String, String> params, String contentType) throws IOException {
         FileInputStream fis = new FileInputStream(file);
@@ -49,7 +49,7 @@ public class StaticResource implements GetableResource {
         int n = 0;
         while( -1 != (n = bin.read( buffer )) ) {
             out.write( buffer, 0, n );
-        }        
+        }
     }
 
 	@Override
@@ -72,7 +72,7 @@ public class StaticResource implements GetableResource {
     }
 
 	@Override
-    public Date getModifiedDate() {        
+    public Date getModifiedDate() {
         Date dt = new Date(file.lastModified());
 //        log.debug("static resource modified: " + dt);
         return dt;
@@ -85,7 +85,7 @@ public class StaticResource implements GetableResource {
 
 	@Override
     public String getContentType(String preferredList) {
-        Collection mimeTypes = MimeUtil.getMimeTypes( file );
+        Collection<?> mimeTypes = MimeUtil.getMimeTypes( file );
         StringBuilder sb = null;
         for( Object o : mimeTypes ) {
             MimeType mt = (MimeType) o;

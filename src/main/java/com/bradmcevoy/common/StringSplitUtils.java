@@ -61,13 +61,13 @@ public class StringSplitUtils {
      * @return a <code>Map</code> representing the array contents, or <code>null</code> if the array to process was
      *         null or empty
      */
-    public static Map splitEachArrayElementAndCreateMap( String[] array,
+    public static Map<String, String> splitEachArrayElementAndCreateMap( String[] array,
         String delimiter, String removeCharacters ) {
         if( ( array == null ) || ( array.length == 0 ) ) {
             return null;
         }
 
-        Map map = new HashMap();
+        Map<String, String> map = new HashMap<String, String>();
 
         for( int i = 0; i < array.length; i++ ) {
             String postRemove;
@@ -170,7 +170,7 @@ public class StringSplitUtils {
             return EMPTY_STRING_ARRAY;
         }
 
-        List list = new ArrayList();
+        List<String> list = new ArrayList<String>();
         int i = 0;
         int start = 0;
         boolean match = false;

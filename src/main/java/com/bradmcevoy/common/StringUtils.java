@@ -17,7 +17,7 @@ public abstract class StringUtils {
         if( delimiter == null ) {
             return new String[]{str};
         }
-        List result = new ArrayList();
+        List<String> result = new ArrayList<String>();
         if( "".equals( delimiter ) ) {
             for( int i = 0; i < str.length(); i++ ) {
                 result.add( str.substring( i, i + 1 ) );
@@ -37,7 +37,7 @@ public abstract class StringUtils {
         return toStringArray( result );
     }
 
-    public static String[] toStringArray( Collection collection ) {
+    public static String[] toStringArray( Collection<String> collection ) {
         if( collection == null ) {
             return null;
         }
@@ -45,14 +45,14 @@ public abstract class StringUtils {
     }
 
 	/**
-	 * 
+	 *
 	 * true iff the given string contains any of the given strings
-	 * 
+	 *
 	 * @param ua
 	 * @param browserIds
-	 * @return 
+	 * @return
 	 */
-	public static boolean contains(String ua, String[] browserIds) {	
+	public static boolean contains(String ua, String[] browserIds) {
 		for(String s : browserIds ) {
 			if( ua.contains(s)) {
 				return true;

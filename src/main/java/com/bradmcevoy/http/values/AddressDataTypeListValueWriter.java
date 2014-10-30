@@ -5,10 +5,10 @@ import com.bradmcevoy.http.XmlWriter.Element;
 import java.util.Map;
 
 /**
- * Supports AddressDataTypeList objects, and writes them out as a list of  
- * <C:address-data-type content-type="text/vcard" version="3.0"/> 
+ * Supports AddressDataTypeList objects, and writes them out as a list of
+ * <C:address-data-type content-type="text/vcard" version="3.0"/>
  * elements
- * 
+ *
  * @author nabil.shams
  */
 public class AddressDataTypeListValueWriter implements ValueWriter {
@@ -20,7 +20,7 @@ public class AddressDataTypeListValueWriter implements ValueWriter {
 	}
 
 	@Override
-	public void writeValue(XmlWriter writer, String nsUri, String prefix, String localName, Object val, String href, Map<String, String> nsPrefixes) {		
+	public void writeValue(XmlWriter writer, String nsUri, String prefix, String localName, Object val, String href, Map<String, String> nsPrefixes) {
 		if (val instanceof AddressDataTypeList) {
 			Element parent = writer.begin(prefix, localName).open();
 			AddressDataTypeList list = (AddressDataTypeList) val;

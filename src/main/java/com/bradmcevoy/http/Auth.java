@@ -1,10 +1,12 @@
 package com.bradmcevoy.http;
 
-import com.bradmcevoy.common.StringSplitUtils;
 import java.util.Map;
+
 import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.bradmcevoy.common.StringSplitUtils;
 
 /**
  * Holds authentication information for a request
@@ -23,7 +25,8 @@ import org.slf4j.LoggerFactory;
  */
 public class Auth {
 
-    private static final Logger log = LoggerFactory.getLogger( Auth.class );
+    @SuppressWarnings("unused")
+	private static final Logger log = LoggerFactory.getLogger( Auth.class );
 
     /**
      * Holds application specific user data, as returned from the authenticate
@@ -166,7 +169,7 @@ public class Auth {
 
     /**
      * set by digest auth processing. Used to add stale nonce flag to challenge
-     * 
+     *
      * @param nonceStale
      */
     public void setNonceStale( boolean nonceStale ) {
@@ -174,7 +177,7 @@ public class Auth {
     }
 
 
-    
+
 
 
 
@@ -194,7 +197,7 @@ public class Auth {
 
     private void parseDigest( String s ) {
         String[] headerEntries = StringSplitUtils.splitIgnoringQuotes( s, ',' );
-        Map headerMap = StringSplitUtils.splitEachArrayElementAndCreateMap( headerEntries, "=", "\"" );
+        Map<?, ?> headerMap = StringSplitUtils.splitEachArrayElementAndCreateMap( headerEntries, "=", "\"" );
 
 //        log.debug( "headerMap: " + headerMap);
 
