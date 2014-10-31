@@ -20,6 +20,7 @@ package v7db.files;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Properties;
 
 import org.apache.commons.lang3.ArrayUtils;
@@ -35,7 +36,7 @@ public class Main {
 
 		// find a [-f config.properties]
 		File configFile = null;
-		{
+/*		{
 			int flag = ArrayUtils.indexOf(args, "-f");
 			if (flag > -1) {
 				configFile = new File(args[flag + 1]);
@@ -47,9 +48,15 @@ public class Main {
 		if (args.length == 0) {
 			System.err.println("v7files [-f config.properties] <command>");
 			System.exit(1);
-		}
+		}*/
 
-		String command = args[0];
+		URL defaultImage = Main.class.getResource("/v7db/files/defaults.properties");
+		configFile  = new File(defaultImage.toURI());
+
+
+
+
+		String command = "serve";//args[0];
 
 		Class<?> commandClass;
 		try {
