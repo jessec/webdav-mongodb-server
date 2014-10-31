@@ -15,8 +15,8 @@ import org.slf4j.LoggerFactory;
 public class AuthenticationService {
 
 	private static final Logger log = LoggerFactory.getLogger(AuthenticationService.class);
-	
-	
+
+
 	private List<AuthenticationHandler> authenticationHandlers;
 	private List<AuthenticationHandler> extraHandlers;
 	private List<AuthenticationHandler> allHandlers;
@@ -39,7 +39,7 @@ public class AuthenticationService {
 
 	/**
 	 * Creates basic and digest handlers with the given NonceProvider
-	 * 
+	 *
 	 * @param nonceProvider
 	 */
 	public AuthenticationService(NonceProvider nonceProvider) {
@@ -225,10 +225,10 @@ public class AuthenticationService {
 	/**
 	 * Determine if we can use external identify providers to authenticate this
 	 * request
-	 * 
+	 *
 	 * @param resource
 	 * @param request
-	 * @return 
+	 * @return
 	 */
 	public boolean canUseExternalAuth(Resource resource, Request request) {
 		if (isDisableExternal()) {
@@ -241,7 +241,7 @@ public class AuthenticationService {
 		}
 
 		// external authentication requires redirecting the user's browser to another
-		// site and displaying a login form. 
+		// site and displaying a login form.
 
 		// This can only be done if the resource
 		// being requested is a webpage. This means that it is Getable and that it
